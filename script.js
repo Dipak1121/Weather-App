@@ -24,32 +24,91 @@ async function addCity(){
     
     const div = document.createElement("div");
     div.classList.add("weather-card");
-    div.innerHTML = `
-    <div class="weather-info">
-    <div class="info-1">
-    <p class="temp">${data.main.temp}°</p>
-    <p class="coords">H-${data.main.temp_max}°  L-${data.main.temp_min}°</p>
-    <p class="city">${data.name}, ${data.sys.country}</p>
-</div>
-<div class="info-2">
-    <img class="img" src="${data.weather[0].main}.png">
-    <p class="condition">${data.weather[0].main}</p>
-</div>
-</div>
-<div class="other-info">
-<div class="info-div">
-<p class="humidity">Humidity</p>
-<p>${data.main.humidity}%</p>
-</div>
-<div class="info-div">
-    <p class="pressure">Pressure</p>
-    <p>${data.main.pressure} Pa</p>
+//     div.innerHTML = `
+//     <div class="weather-info">
+//     <div class="info-1">
+//     <p class="temp">${data.main.temp}°</p>
+//     <p class="coords">H-${data.main.temp_max}°  L-${data.main.temp_min}°</p>
+//     <p class="city">${data.name}, ${data.sys.country}</p>
+// </div>
+// <div class="info-2">
+//     <img class="img" src="${data.weather[0].main}.png">
+//     <p class="condition">${data.weather[0].main}</p>
+// </div>
+// </div>
+// <div class="other-info">
+// <div class="info-div">
+// <p class="humidity">Humidity</p>
+// <p>${data.main.humidity}%</p>
+// </div>
+// <div class="info-div">
+//     <p class="pressure">Pressure</p>
+//     <p>${data.main.pressure} Pa</p>
+//     </div>
+//     <div class="info-div">
+//     <p class="wind-speed">Wind Speed</p>
+//     <p>${data.wind.speed}kmph</p>
+//     </div>
+// </div>`;
+
+    const weatherInfo = document.createElement("div");
+    weatherInfo.classList.add("weather-info");
+
+    const otherInfo = document.createElement("div");
+    otherInfo.classList.add("other-info");
+
+const info1 = document.createElement("div");
+info1.classList.add("info-1");
+
+const p1 = document.createElement("p");
+p1.classList.add("temp")
+p1.innerText = `${data.main.temp}°`;
+
+const p2 = document.createElement("p");
+p2.classList.add("coords");
+p2.innerText = `H-${data.main.temp_max}°  L-${data.main.temp_min}°`;
+
+const p3 = document.createElement("p");
+p3.classList.add("city");
+p3.innerText = `${data.name}, ${data.sys.country}`;
+
+info1.appendChild(p1);
+info1.appendChild(p2);
+info1.appendChild(p3);
+
+const info2 = document.createElement("div");
+info2.classList.add("info-2");
+
+const img = document.createElement("img");
+img.classList.add("img");
+img.src = `${data.weather[0].main}.png`;
+
+const p4 = document.createElement("p");
+p4.classList.add("condition");
+p4.innerText = `${data.weather[0].main}`;
+
+info2.appendChild(img);
+info2.appendChild(p4);
+
+weatherInfo.appendChild(info1);
+weatherInfo.appendChild(info2);
+
+otherInfo.innerHTML = `
+    <div class="info-div">
+        <p class="humidity">Humidity</p>
+        <p>${data.main.humidity}%</p>
     </div>
     <div class="info-div">
-    <p class="wind-speed">Wind Speed</p>
-    <p>${data.wind.speed}kmph</p>
+        <p class="pressure">Pressure</p>
+        <p>${data.main.pressure} Pa</p>
     </div>
-</div>`;
+    <div class="info-div">
+        <p class="wind-speed">Wind Speed</p>
+        <p>${data.wind.speed}kmph</p>
+    </div>`;
+
+div.appendChild(weatherInfo);
+div.appendChild(otherInfo);
 
     addedCity.push(data.name);
     addedCityWithTemp.push([div, data.main.temp]);
