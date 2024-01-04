@@ -32,7 +32,7 @@ async function addCity(){
     <p class="city">${data.name}, ${data.sys.country}</p>
 </div>
 <div class="info-2">
-    <img class="img" src="./${data.weather[0].main}.png">
+    <img class="img" src="${data.weather[0].main}.png">
     <p class="condition">${data.weather[0].main}</p>
 </div>
 </div>
@@ -51,11 +51,11 @@ async function addCity(){
     </div>
 </div>`;
 
-addedCity.push(data.name);
-addedCityWithTemp.push([div, data.main.temp]);
-console.log(typeof data.main.temp)
-sortAndAddCard(addedCityWithTemp);
-// weatherDisplay.appendChild(addedCityWithTemp[0][0]);
+    addedCity.push(data.name);
+    addedCityWithTemp.push([div, data.main.temp]);
+    console.log(typeof data.main.temp)
+    sortAndAddCard(addedCityWithTemp);
+
     }
     catch(error){
         alert("Please check city name");
