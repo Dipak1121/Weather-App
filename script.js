@@ -81,7 +81,34 @@ info2.classList.add("info-2");
 
 const img = document.createElement("img");
 img.classList.add("img");
-img.src = `${data.weather[0].main}.png`;
+if(data.weather[0].main == "Mist"){
+    img.src = "Mist.png";
+}
+else if(data.weather[0].main == "Fog"){
+    img.src = "fog.png";
+}
+else if(data.weather[0].main == "Rain"){
+    img.src = "rain.png";
+}
+else if(data.weather[0].main == "Clouds"){
+    img.src = "clouds.png";
+}
+else if(data.weather[0].main == "Haze"){
+    img.src = "Haze.png";
+}
+else if(data.weather[0].main == "Smoke"){
+    img.src = "smoke.png";
+}
+else if(data.weather[0].main == "Snow"){
+    img.src = "snow.png";
+}
+else if(data.weather[0].main == "Drizzle"){
+    img.src = "drizzle.png";
+}
+else{
+    img.src = "Clear.png";
+}
+
 
 const p4 = document.createElement("p");
 p4.classList.add("condition");
